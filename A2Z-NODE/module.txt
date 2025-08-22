@@ -1,0 +1,66 @@
+# Modules in JavaScript
+
+👉 Modules are used to split code into separate files and reuse it.
+   This makes code clean and maintainable.
+
+There are two types of modules:
+1. CommonJS (default in Node.js)
+2. ES6 Module (modern JavaScript)
+
+---
+
+## 1. CommonJS Module
+
+⚡ This is the default module system in Node.js.
+
+### Export (math.js)
+function sum(a, b) {
+  return a + b;
+}
+
+module.exports = { sum };
+
+### Import (app.js)
+const arithmetic = require("./math");
+console.log(arithmetic.sum(5, 3)); // Output: 8
+
+👉 Here, `module.exports` is used to export,
+   and `require()` is used to import.
+
+---
+
+## 2. ES6 Module
+
+⚡ This is the modern JavaScript standard module system.
+⚠️ In Node.js, you must either add `"type":"module"` in `package.json`
+   or use the `.mjs` file extension to enable it.
+
+### Export (math.js)
+export function sum(a, b) {
+  return a + b;
+}
+
+### Import (app.js)
+import { sum } from "./math.js";
+console.log(sum(5, 3)); // Output: 8
+
+👉 Here, the `export` keyword is used to export a function/variable,
+   and the `import` keyword is used to bring it into another file.
+
+---
+
+## 3. Difference between CommonJS and ES6 Modules
+
+CommonJS:
+- Syntax: require(), module.exports
+- Default in Node.js
+- Exports as an object (mutable)
+- Dynamically loaded (at runtime)
+
+ES6 Module:
+- Syntax: import/export
+- Works in both Browser + Node.js (with config)
+- Static bindings (fixed at compile time)
+- Better optimization support
+
+---
