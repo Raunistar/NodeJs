@@ -1,5 +1,5 @@
 {
-  "editor.fontSize": 18,
+  "editor.fontSize": 16,
   "editor.fontFamily": "\"JetBrains Mono\",\"Fira Code\",\"FiraCode-Retina\"",
   "editor.fontLigatures": false,
   "editor.fontWeight": "400",
@@ -139,5 +139,6 @@
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.hideOnStartup": "whenEmpty",
   "terminal.integrated.cursorWidth": 2,
-  "terminal.integrated.lineHeight": 0
+  "terminal.integrated.lineHeight": 0,
+  "terminal.integrated.fontWeightBold": "700"
 }
