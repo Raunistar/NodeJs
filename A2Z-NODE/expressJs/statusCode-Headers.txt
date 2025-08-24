@@ -1,0 +1,81 @@
+# Let's create a .txt file with the full details of HTTP Status Codes and Headers in Express.js
+
+content = """Express.js - HTTP Status Codes and Headers Cheatsheet
+======================================================
+
+HTTP Status Codes
+-----------------
+
+200 OK              -> Request successful.
+201 Created         -> Resource successfully created.
+202 Accepted        -> Resource Accepted.
+205 Reset Content   -> Resource reset.
+204 No Content      -> Request successful, no content returned.
+301 Moved Permanently -> Resource moved to a new URL.
+302 Found           -> Temporary redirect to another URL.
+400 Bad Request     -> Invalid request (missing or invalid data).
+401 Unauthorized    -> Authentication required (user not logged in).
+403 Forbidden       -> User does not have access to this resource.
+404 Not Found       -> Requested resource not found.
+500 Internal Server Error -> General server error.
+503 Service Unavailable   -> Server is temporarily unavailable (maintenance).
+
+Usage in Express:
+-----------------
+res.status(200).send("Success");
+res.status(201).send("User created");
+res.status(404).send("Page not found");
+res.status(500).send("Server error");
+res.redirect(301, "/new-url");
+
+------------------------------------------------------
+
+HTTP Headers in Express.js
+--------------------------
+
+Content-Type      -> Defines the format of response body.
+   Example: res.set("Content-Type", "application/json");
+
+Content-Length    -> Size of response body in bytes (handled by Express).
+
+Cache-Control     -> Defines caching rules.
+   Example: res.set("Cache-Control", "no-store");
+
+Set-Cookie        -> Send cookies to client.
+   Example: res.cookie("token", "abc123");
+
+Authorization     -> Used for passing tokens (Bearer, Basic Auth).
+   Example: req.headers["authorization"];
+
+Access-Control-Allow-Origin -> Defines allowed domains for CORS.
+   Example: res.set("Access-Control-Allow-Origin", "*");
+
+Location          -> Redirect location header.
+   Example: res.redirect("/login");  // sets Location header
+
+------------------------------------------------------
+
+Example Express.js Code:
+------------------------
+
+const express = require("express");
+const app = express();
+
+// GET with status + headers
+app.get("/", (req, res) => {
+  res
+    .status(200) // Success
+    .set("Content-Type", "text/plain") // Header
+    .set("Custom-Header", "MyValue") // Custom header
+    .send("Hello, this is a response with headers!");
+});
+
+// Handle not found
+app.use((req, res) => {
+  res.status(404).send("Page Not Found");
+});
+
+app.listen(3300, () => {
+  console.log("Server running at http://localhost:3300");
+});
+"""

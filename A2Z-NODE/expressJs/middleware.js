@@ -10,7 +10,7 @@ server.get(
   "/",
   //first middleware
   (req, res, next) => {
-     console.log("This is from first middleware.");
+    console.log("This is from first middleware.");
     next();
   },
   //2nd middleware

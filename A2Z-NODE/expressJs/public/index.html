@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Express.js – HTTP Status & Headers Cheatsheet</title>
+</head>
+
+<body
+  style="margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial; background:#0b1220; color:#eef2ff;">
+  <header style="padding:24px 20px; background:#111827; border-bottom:1px solid #1f2937;">
+    <h1 style="margin:0; font-size:22px; letter-spacing:.3px;">Express.js – HTTP Status Codes & Headers</h1>
+    <p style="margin:6px 0 0; color:#9ca3af; font-size:14px;">Quick reference with examples</p>
+  </header>
+
+  <main style="max-width:960px; margin:20px auto; padding:0 16px 40px;">
+    <section
+      style="background:#111827; border:1px solid #1f2937; border-radius:14px; padding:18px; margin-bottom:18px;">
+      <h2 style="margin:0 0 10px; font-size:18px;">Common Status Codes</h2>
+      <ul style="list-style:none; padding:0; margin:0;">
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>200 OK</strong> — Request successful</li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>201 Created</strong> — Resource created
+        </li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>204 No Content</strong> — Success, no body
+        </li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>301 Moved Permanently</strong> — Permanent
+          redirect</li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>302 Found</strong> — Temporary redirect
+        </li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>400 Bad Request</strong> — Invalid input
+        </li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>401 Unauthorized</strong> — Auth required
+        </li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>403 Forbidden</strong> — Not allowed</li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>404 Not Found</strong> — Missing route</li>
+        <li style="padding:10px 0; border-bottom:1px solid #1f2937;"><strong>500 Internal Server Error</strong> — Server
+          error</li>
+        <li style="padding:10px 0;"><strong>503 Service Unavailable</strong> — Maintenance/overload</li>
+      </ul>
+    </section>
+
+    <section
+      style="background:#111827; border:1px solid #1f2937; border-radius:14px; padding:18px; margin-bottom:18px;">
+      <h2 style="margin:0 0 10px; font-size:18px;">Headers (Quick Use)</h2>
+      <div style="display:grid; grid-template-columns:1fr; gap:10px;">
+        <div style="padding:10px; background:#0b1220; border:1px solid #1f2937; border-radius:10px;">
+          <div style="font-weight:700;">Content-Type</div>
+          <div style="color:#9ca3af;">Format of response body</div>
+          <code
+            style="display:block; margin-top:6px; background:#111827; padding:8px; border-radius:6px;">res.set("Content-Type","application/json");</code>
+        </div>
+        <div style="padding:10px; background:#0b1220; border:1px solid #1f2937; border-radius:10px;">
+          <div style="font-weight:700;">Cache-Control</div>
+          <div style="color:#9ca3af;">Caching rules</div>
+          <code
+            style="display:block; margin-top:6px; background:#111827; padding:8px; border-radius:6px;">res.set("Cache-Control","no-store");</code>
+        </div>
+        <div style="padding:10px; background:#0b1220; border:1px solid #1f2937; border-radius:10px;">
+          <div style="font-weight:700;">Set-Cookie</div>
+          <div style="color:#9ca3af;">Send cookies to client</div>
+          <code
+            style="display:block; margin-top:6px; background:#111827; padding:8px; border-radius:6px;">res.cookie("token","abc123");</code>
+        </div>
+        <div style="padding:10px; background:#0b1220; border:1px solid #1f2937; border-radius:10px;">
+          <div style="font-weight:700;">Access-Control-Allow-Origin</div>
+          <div style="color:#9ca3af;">CORS policy</div>
+          <code
+            style="display:block; margin-top:6px; background:#111827; padding:8px; border-radius:6px;">res.set("Access-Control-Allow-Origin","*");</code>
+        </div>
+        <div style="padding:10px; background:#0b1220; border:1px solid #1f2937; border-radius:10px;">
+          <div style="font-weight:700;">Authorization</div>
+          <div style="color:#9ca3af;">Read bearer/basic token</div>
+          <code
+            style="display:block; margin-top:6px; background:#111827; padding:8px; border-radius:6px;">const auth = req.headers["authorization"];</code>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#111827; border:1px solid #1f2937; border-radius:14px; padding:18px;">
+      <h2 style="margin:0 0 10px; font-size:18px;">Sample Responses</h2>
+      <pre style="margin:0; background:#0b1220; padding:12px; border-radius:10px; overflow:auto;">
+res.status(200).send("Success");
+res.status(201).send("Created");
+res.status(404).send("Not Found");
+res.status(500).send("Server Error");
+res.redirect(301, "/new-url");
+      </pre>
+    </section>
+  </main>
+
+  <footer style="text-align:center; color:#9ca3af; padding:14px 0 30px;">
+    Built for quick dev reference.
+  </footer>
+</body>
+
+</html>
