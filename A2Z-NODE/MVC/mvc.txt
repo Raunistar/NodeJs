@@ -1,0 +1,78 @@
+==============================
+        MVC INTERVIEW CHEAT SHEET
+==============================
+
+[ What is MVC? ]
+- MVC = Model-View-Controller
+- A design pattern that separates an application into 3 parts:
+  1. Model   -> Handles data & business logic
+  2. View    -> UI, presentation layer
+  3. Controller -> Handles input, connects Model & View
+
+[ Advantages of MVC ]
+- Separation of concerns (SoC)
+- Easier testing and debugging
+- Reusability of components
+- Scalable and maintainable applications
+- Supports parallel development (backend/frontend independently)
+
+[ Flow of MVC ]
+1. User interacts with View (UI).
+2. Controller receives input, processes it.
+3. Controller updates Model (business logic, database).
+4. Model updates data and notifies Controller.
+5. Controller updates View with new Model data.
+
+[ Model Responsibilities ]
+- Business logic & data validation
+- Interacts with database or external API
+- Notifies changes (in some frameworks via Observers)
+
+[ View Responsibilities ]
+- Display data from Model
+- Present information to the user
+- Should not contain business logic
+
+[ Controller Responsibilities ]
+- Handles user requests (routes, actions)
+- Communicates with Model & View
+- Acts as a middleman
+
+[ Example in Node.js + Express ]
+(Model)
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+(View - EJS)
+<h1>Hello <%= user.name %></h1>
+
+(Controller - Express Route)
+app.get("/user", (req, res) => {
+  const user = new User("Raunak");
+  res.render("user", { user });
+});
+
+[ MVC vs 3-Tier Architecture ]
+- MVC is focused on separating concerns in an application (UI, Logic, Data).
+- 3-Tier is about physical separation (Presentation Layer, Business Layer, Data Layer).
+
+[ Common Interview Questions ]
+1. Explain MVC pattern with an example.
+2. How does MVC improve scalability and maintainability?
+3. Difference between MVC and MVVM?
+4. In Express.js, how do you structure an MVC project?
+5. Can the View directly access the Model? Why or why not?
+6. How do you test an MVC-based app?
+7. Explain a real-world analogy for MVC.
+
+[ Best Practices ]
+- Keep Controllers thin, Models fat (logic should be in Models).
+- Views should only handle UI.
+- Use services/repositories for complex business logic.
+- Don’t tightly couple Controller and View.
+
+==============================
+"""

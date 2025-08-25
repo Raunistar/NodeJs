@@ -1,0 +1,54 @@
+==============================
+        EJS CHEAT SHEET
+==============================
+
+[ Output ]
+<%= variable %>    -> Escaped output (HTML safe)
+<%- variable %>    -> Unescaped output (renders HTML)
+
+[ Scriptlet (Logic) ]
+<% code %>         -> Run JS code (no output)
+<% if (user) { %>
+   <h1>Hello <%= user.name %></h1>
+<% } %>
+
+[ Loop ]
+<ul>
+  <% items.forEach(function(item) { %>
+    <li><%= item %></li>
+  <% }); %>
+</ul>
+
+[ Include Partials ]
+<%- include('header') %>
+<%- include('footer') %>
+
+[ Template Inheritance (Layout) ]
+<%- include('layout', { title: "Home", body: "<h1>Welcome</h1>" }) %>
+
+[ Passing Data ]
+(Server - Node.js/Express)
+res.render("index", { title: "Home", user: { name: "Raunak" } });
+
+(EJS)
+<h1><%= title %></h1>
+<p>Hello <%= user.name %></p>
+
+[ Conditional Rendering ]
+<% if (loggedIn) { %>
+  <p>Welcome back!</p>
+<% } else { %>
+  <p>Please login.</p>
+<% } %>
+
+[ Iterating with Index ]
+<% for (let i = 0; i < items.length; i++) { %>
+  <p><%= i %> - <%= items[i] %></p>
+<% } %>
+
+[ Comments ]
+<%# This is a comment %>
+
+[ Escaping Special Tags ]
+<%% %>   -> Outputs <%
+"""
