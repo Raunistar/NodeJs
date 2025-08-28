@@ -1,8 +1,97 @@
-
-.container{
-    margin: 24px;
+.container {
+  margin: 24px;
 }
 
-img{
-    width: 80px;
+img {
+  width: 80px;
+}
+/* ===== General Reset ===== */
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background: linear-gradient(90deg, #1c1c1c, #343a40);
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #ffcc00 !important;
+}
+
+.nav-link {
+  color: #eaeaea !important;
+  margin-right: 1rem;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #ffcc00 !important;
+}
+
+/* ===== Container ===== */
+.container {
+  margin-top: 2rem;
+  max-width: 1200px;
+}
+
+/* ===== Cards / Product UI ===== */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* ===== Buttons ===== */
+.btn-custom {
+  background-color: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #e6b800;
+  color: #111;
+}
+
+/* ===== Tables (if you use them) ===== */
+.table {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
 }
