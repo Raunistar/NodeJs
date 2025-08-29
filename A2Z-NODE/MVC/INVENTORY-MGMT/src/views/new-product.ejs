@@ -17,11 +17,18 @@
         <h2 class="mt-3 mb-4">Add New Product</h2>
       </div>
       <div class="card-body">
-        <% if(errorMessage){%>
+        <% if (errorMessages && errorMessages.length> 0) { %>
           <div class="alert alert-danger" role="alert">
-            <%= errorMessage %>
+            <ul>
+              <% errorMessages.forEach(function(msg){ %>
+                <li>
+                  <%= msg %>
+                </li>
+                <% }) %>
+            </ul>
           </div>
-          <%}%>
+          <% } %>
+
             <form action="/" method="POST">
 
               <!-- Product Name -->
