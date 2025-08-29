@@ -2,11 +2,11 @@ import express from "express";
 import ProductController from "./src/controllers/product.controller.js";
 import ejsLayouts from "express-ejs-layouts";
 import path from "path";
-
+import { validationRequest } from "./src/middlewares/validation.middleware.js";
 const server = express();
 
 //parse form data
-server.use(express.urlencoded({extended:true}));
+server.use(express.urlencoded({ extended: true }));
 
 // setup view engine settings
 server.set("view engine", "ejs");
@@ -19,7 +19,7 @@ server.use(ejsLayouts);
 const productController = new ProductController();
 server.get("/", productController.getProducts);
 server.get("/new", productController.getAddForm);
-server.post("/", productController.addNewProduct);
+server.post("/", validationRequest, productController.addNewProduct);
 server.use(express.static("src/views"));
 
 server.listen(3400);
