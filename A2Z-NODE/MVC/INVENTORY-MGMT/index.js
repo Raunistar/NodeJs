@@ -5,6 +5,9 @@ import path from "path";
 
 const server = express();
 
+//parse form data
+server.use(express.urlencoded({extended:true}));
+
 // setup view engine settings
 server.set("view engine", "ejs");
 // path of our views
