@@ -1,27 +1,48 @@
-import { body, validationResult } from "express-validator";
+import {
+  body,
+  validationResult,
+} from 'express-validator';
 
-export const validationRequest = async (req, res, next) => {
-  // 1. Validation rules
+const validateRequest = async (
+  req,
+  res,
+  next
+) => {
+  console.log(req.body);
+  // 1. Setup rules for validation.
   const rules = [
-    body("name").notEmpty().withMessage("Name is required"),
-    body("price")
+    body('name')
       .notEmpty()
-      .withMessage("Price is required")
-      .isFloat({ min: 1 })
-      .withMessage("Price must be at least 1"),
-    body("imageUrl").isURL().withMessage("Invalid URL"),
+      .withMessage('Name is required'),
+    body('price')
+      .isFloat({ gt: 0 })
+      .withMessage(
+        'Price should be a positive value'
+      ),
+    body('imageUrl').custom((value, { req }) => {
+      if (!req.file) {
+        throw new Error('Image is required');
+      }
+      return true;
+    }),
   ];
 
-  // 2. Run rules
-  await Promise.all(rules.map((rule) => rule.run(req)));
+  // 2. run those rules.
+  await Promise.all(
+    rules.map((rule) => rule.run(req))
+  );
 
-  // 3. Collect errors
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.render("new-product", {
-      errorMessages: errors.array().map((err) => err.msg), // send all messages
+  // 3. check if there are any errors after running the rules.
+  var validationErrors = validationResult(req);
+  console.log(validationErrors);
+  // 4. if errros, return the error message
+  if (!validationErrors.isEmpty()) {
+    return res.render('new-product', {
+      errorMessage:
+        validationErrors.array()[0].msg,
     });
   }
-
   next();
 };
+
+export default validateRequest;

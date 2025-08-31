@@ -1,0 +1,45 @@
+<h2 class=" mb-3 text-center fw-bold text-gradient">📦 Product Inventory</h2>
+
+<div class="table-responsive shadow-lg rounded-4 overflow-hidden">
+    <table class="table table-hover align-middle mb-0">
+        <thead class="table-dark text-uppercase">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(product=> { %>
+                <tr>
+                    <td class="fw-semibold">
+                        <%= product.id %>
+                    </td>
+                    <td>
+                        <%= product.name %>
+                    </td>
+                    <td class="text-muted">
+                        <%= product.desc %>
+                    </td>
+                    <td class="fw-bold text-success">$<%= product.price %>
+                    </td>
+                    <td>
+                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>"
+                            class="img-thumbnail rounded-3 shadow-sm" style="max-width: 80px;">
+                    </td>
+                    <td>
+                        <a href="/update-product/<%= product.id %>" class="btn btn-sm btn-warning me-2">
+                            ✏️ Update
+                        </a>
+                        <button class="btn btn-sm btn-danger" onclick="deleteProduct('<%= product.id %>')">
+                            🗑 Delete
+                        </button>
+                    </td>
+                </tr>
+                <% }) %>
+        </tbody>
+    </table>
+</div>
