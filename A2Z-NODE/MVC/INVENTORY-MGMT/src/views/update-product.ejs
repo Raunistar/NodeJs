@@ -1,36 +1,62 @@
-<!-- views/add-product.ejs -->
+<!-- views/update-product.ejs -->
 
-<h1 class="mt-5 mb-4 header">Update Product</h1>
+<div class="card border-0 rounded-4">
+    <div class="card-body p-5">
 
-<%if(errorMessage){ %>
-<div class="alert alert-danger" role="alert">
-    <%= errorMessage %>
+        <!-- Title -->
+        <h2 class="text-center mb-4 fw-bold bg-dark text-white py-2 rounded">
+            Update Product
+        </h2>
+
+        <% if (errorMessage) { %>
+            <div class="alert alert-danger text-center rounded-3" role="alert">
+                <%= errorMessage %>
+            </div>
+            <% } %>
+
+                <form action="/update-product" method="post">
+                    <input type="hidden" class="form-control" id="id" name="id" value="<%= product.id %>">
+
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-semibold">Product Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>"
+                            required>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="desc" class="form-label fw-semibold">Product Description</label>
+                        <textarea class="form-control" id="desc" name="desc" rows="3"
+                            required><%= product.desc %></textarea>
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-3">
+                        <label for="price" class="form-label fw-semibold">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" step="0.01"
+                            value="<%= product.price %>" required>
+                    </div>
+
+                    <!-- Image -->
+                    <div class="mb-3">
+                        <label for="imageUrl" class="form-label">Image URL</label>
+                        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
+                            value="<%= product.imageUrl %>">
+                        <small class="text-muted">Leave empty to keep the existing image</small>
+                    </div>
+
+
+    </div>
+
+    <!-- Update Button -->
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary rounded">
+            <i class="bi bi-pencil-square"></i> Update Product
+        </button>
+    </div>
+    </form>
+
 </div>
-<%}%>
-
-<form action="/update-product" method="post">
-    <input type="hidden" class="form-control" id="id" name="id" value="<%= product.id %>">
-    
-    <div class="mb-3">
-        <label for="name" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="name" name="name" value="<%= product.name %>">
-    </div>
-    <div class="mb-3">
-        <label for="desc" class="form-label">Product Description</label>
-        <textarea class="form-control" id="desc" name="desc" rows="3"
-        required><%= product.desc %>
-    </textarea>
-    </div>
-    <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input type="number" class="form-control" id="price" name="price" 
-        value="<%= product.price %>"
-        step="0.01">
-    </div>
-    <div class="mb-3">
-        <label for="imageUrl" class="form-label">Image URL</label>
-        <input type="text" class="form-control" id="imageUrl" name="imageUrl"
-        value="<%= product.imageUrl %>">
-    </div>
-    <button type="submit" class="btn btn-primary">Update Product</button>
-</form>
+</div>
