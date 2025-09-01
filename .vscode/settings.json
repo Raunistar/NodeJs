@@ -1,12 +1,12 @@
 {
-  "editor.fontSize": 16,
+  "editor.fontSize": 17,
   "editor.fontFamily": "\"JetBrains Mono\",\"Fira Code\",\"FiraCode-Retina\"",
   "editor.fontLigatures": false,
   "editor.fontWeight": "400",
   "editor.tabSize": 2,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": "on",
-  "editor.cursorWidth": 3,
+  "editor.cursorWidth": 0,
   "editor.wordWrap": "on",
   "editor.renderWhitespace": "all",
   "editor.autoClosingOvertype": "auto",
@@ -57,9 +57,9 @@
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "terminal.integrated.cursorBlinking": true,
-  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 15,
   "terminal.integrated.fontFamily": "'JetBrains Mono', monospace",
-  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorStyle": "block",
   "problems.showCurrentInStatus": true,
   "cSpell.words": [
     "adin",
@@ -128,7 +128,7 @@
   "C_Cpp_Runner.showCompilationTime": true,
   "C_Cpp_Runner.useLinkTimeOptimization": true,
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "editor.cursorStyle": "line",
+  "editor.cursorStyle": "block",
   "java.project.explorer.showNonJavaResources": false,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
@@ -138,7 +138,9 @@
   "code-runner.runInTerminal": true,
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.hideOnStartup": "whenEmpty",
-  "terminal.integrated.cursorWidth": 2,
+  "terminal.integrated.cursorWidth": 0,
   "terminal.integrated.lineHeight": 0,
-  "terminal.integrated.fontWeightBold": "700"
+  "terminal.integrated.fontWeightBold": "700",
+  "terminal.integrated.letterSpacing": 0,
+  "pdf-preview.default.cursor": "hand"
 }
