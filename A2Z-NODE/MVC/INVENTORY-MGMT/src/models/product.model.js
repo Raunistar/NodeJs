@@ -12,16 +12,12 @@ export default class ProductModel {
   }
 
   static update(productObj) {
-    const index = products.findIndex(
-      (p) => p.id == productObj.id
-    );
+    const index = products.findIndex((p) => p.id == productObj.id);
     products[index] = productObj;
   }
 
   static delete(id) {
-    const index = products.findIndex(
-      (p) => p.id == id
-    );
+    const index = products.findIndex((p) => p.id == id);
     products.splice(index, 1);
   }
 
@@ -44,23 +40,23 @@ export default class ProductModel {
 var products = [
   new ProductModel(
     1,
-    'Product 1',
-    'Description for Product 10',
+    "Product 1",
+    "Description for Product 10",
     19.99,
-    'https://m.media-amazon.com/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg'
+    "https://m.media-amazon.com/images/I/51-nXsSRfZL._SX328_BO1,204,203,200_.jpg"
   ),
   new ProductModel(
     2,
-    'Product 2',
-    'Description for Product 2',
+    "Product 2",
+    "Description for Product 2",
     29.99,
-    'https://m.media-amazon.com/images/I/51xwGSNX-EL._SX356_BO1,204,203,200_.jpg'
+    "https://m.media-amazon.com/images/I/51xwGSNX-EL._SX356_BO1,204,203,200_.jpg"
   ),
   new ProductModel(
     3,
-    'Product 3',
-    'Description for Product 3',
+    "Product 3",
+    "Description for Product 3",
     39.99,
-    'https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg'
+    "https://m.media-amazon.com/images/I/31PBdo581fL._SX317_BO1,204,203,200_.jpg"
   ),
 ];

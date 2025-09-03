@@ -5,13 +5,25 @@ import ejsLayouts from "express-ejs-layouts";
 import path from "path";
 import validationMiddleware from "./src/middlewares/validation.middleware.js";
 import { uploadFile } from "./src/middlewares/file-upload.middleware.js";
+import session from "express-session";
 
 const app = express();
 
 app.use(express.static("public"));
 
+//express-session
+app.use(
+  session({
+    secret: "secretKey",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false },
+  })
+);
+
 const productsController = new ProductsController();
 const userController = new UserController();
+
 app.use(ejsLayouts);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
