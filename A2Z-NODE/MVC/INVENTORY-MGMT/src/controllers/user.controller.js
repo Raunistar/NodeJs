@@ -24,6 +24,8 @@ export default class UserController {
         errorMessage: "Invalid Credentials",
       });
     }
+    //using express session here
+    req.session.userEmail = email;
     var products = ProductModel.getAll();
     res.render("index", { products });
   }
