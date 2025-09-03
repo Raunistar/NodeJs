@@ -29,4 +29,14 @@ export default class UserController {
     var products = ProductModel.getAll();
     res.render("index", { products });
   }
+  logout(req, res) {
+    //on logout destroy session
+    req.session.destroy((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect("/login");
+      }
+    });
+  }
 }

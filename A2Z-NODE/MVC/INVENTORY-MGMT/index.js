@@ -27,13 +27,18 @@ const userController = new UserController();
 app.use(ejsLayouts);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.locals.userEmail = req.session.userEmail;
+  next();
+});
+
 app.set("view engine", "ejs");
 app.set("views", path.join(path.resolve(), "src", "views"));
 app.get("/register", userController.getRegister);
 app.get("/login", userController.getLogin);
 app.post("/register", userController.postRegister);
 app.post("/login", userController.postLogin);
-
+app.get("/logout", userController.logout);
 app.get("/", productsController.getProducts);
 app.get("/add-product", auth, productsController.getAddProduct);
 
