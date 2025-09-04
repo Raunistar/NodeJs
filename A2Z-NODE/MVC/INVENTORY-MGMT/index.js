@@ -8,6 +8,8 @@ import { uploadFile } from "./src/middlewares/file-upload.middleware.js";
 import session from "express-session";
 import { auth } from "./src/middlewares/auth.middleware.js";
 const app = express();
+import cookieParser from "cookie-parser";
+import { setLastVisit } from "./src/middlewares/lastvisit.middleware.js";
 
 app.use(express.static("public"));
 
@@ -31,7 +33,8 @@ app.use((req, res, next) => {
   res.locals.userEmail = req.session.userEmail;
   next();
 });
-
+app.use(cookieParser());
+app.use(setLastVisit);
 app.set("view engine", "ejs");
 app.set("views", path.join(path.resolve(), "src", "views"));
 app.get("/register", userController.getRegister);
@@ -41,6 +44,9 @@ app.post("/login", userController.postLogin);
 app.get("/logout", userController.logout);
 app.get("/", productsController.getProducts);
 app.get("/add-product", auth, productsController.getAddProduct);
+app.get("/", (req, res) => {
+  res.render("home", { lastVisit: req.lastVisit });
+});
 
 app.get("/update-product/:id", auth, productsController.getUpdateProductView);
 
